@@ -80,22 +80,24 @@ export const pdfUtils = StyleSheet.create({
 export const pdfContainers = StyleSheet.create({
     page: {
         fontFamily: "Geist",
+        display: "flex",
+        flexDirection: "column",
     },
     invoiceTerms: {
         paddingHorizontal: 40,
-        paddingVertical: 20,
+        paddingVertical: 16,
         display: 'flex',
         alignItems: "center",
         flexDirection: 'row',
     },
     YourDetails: {
         paddingHorizontal: 40,
-        paddingVertical: 16,
+        paddingVertical: 14,
         flex: 1
     },
     CompanyDetails: {
         paddingHorizontal: 40,
-        paddingVertical: 16,
+        paddingVertical: 14,
         flex: 1
     },
     imageContainer: {

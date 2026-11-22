@@ -15,7 +15,7 @@ export const PaymentDetailsPreview: React.FC<
 }) => {
   const currencyDetails = currencyList.find(
     (currencyDetails) =>
-      currencyDetails.value.toLowerCase() === currency.toLowerCase()
+      currencyDetails.value.toLowerCase() === (currency || "INR").toLowerCase()
   )?.details;
 
   return (

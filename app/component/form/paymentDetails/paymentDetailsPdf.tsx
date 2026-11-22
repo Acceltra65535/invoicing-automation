@@ -20,7 +20,7 @@ export const PaymentDetailsPdf: React.FC<PaymentDetailsPdfProps> = ({
 }) => {
   const currencyDetails = currencyList.find(
     (currencyDetail) =>
-      currencyDetail.value.toLowerCase() === currency.toLowerCase()
+      currencyDetail.value.toLowerCase() === (currency || "INR").toLowerCase()
   )?.details;
 
   return (
@@ -35,7 +35,8 @@ export const PaymentDetailsPdf: React.FC<PaymentDetailsPdfProps> = ({
           flex: 1,
           paddingLeft: 40,
           paddingRight: 12,
-          paddingVertical: 16,
+          paddingTop: 14,
+          paddingBottom: 8,
           flexDirection: "column",
         }}
       >
@@ -126,7 +127,8 @@ export const PaymentDetailsPdf: React.FC<PaymentDetailsPdfProps> = ({
           flex: 1,
           paddingLeft: 40,
           paddingRight: 12,
-          paddingVertical: 16,
+          paddingTop: 14,
+          paddingBottom: 8,
           flexDirection: "column",
         }}
       >

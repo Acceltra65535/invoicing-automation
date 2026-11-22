@@ -21,7 +21,7 @@ export const PreviewDetails = ({
   onClick?: (step: string) => void;
 }) => (
   <div className="overflow-x-auto">
-    <div className="w-[595px] h-[842px] bg-white rounded-2xl border border-dashed justify-center items-center">
+    <div className="w-[595px] min-h-[842px] bg-white rounded-2xl border border-dashed flex flex-col">
       <InvoiceTermsPreview {...invoiceTerms} onClick={onClick} />
       <div className="border-b  grid grid-cols-2 justify-between border-dashed">
         <div
@@ -60,6 +60,14 @@ export const PreviewDetails = ({
         <div className="">
           <PaymentDetailsPreview {...paymentDetails} onClick={onClick} />
         </div>
+      </div>
+      <div className="mt-auto px-10 pt-4 pb-6">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/cjtest.svg"
+          alt="Cyberjar logo"
+          className="h-8 w-auto block"
+        />
       </div>
     </div>
   </div>

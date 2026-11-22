@@ -1,4 +1,5 @@
 import { View } from "@react-pdf/renderer";
+import { BrandLogoPdf } from "./brandLogoPdf";
 import { YourDetailsPDF } from "./yourDetails/yourDetailsPdf";
 import { InvoiceTermsPdf } from "./invoiceTerms/InvoiceTermsPdf";
 import { CompanyDetailsPdf } from "./companyDetails/companyDetailsPdf";
@@ -21,7 +22,7 @@ export const PdfDetails = ({
   invoiceTerms: InvoiceTerms;
   countryImageUrl: string;
 }) => (
-  <View>
+  <View style={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
     <InvoiceTermsPdf {...invoiceTerms} />
     <View
       style={{
@@ -44,6 +45,17 @@ export const PdfDetails = ({
           countryImageUrl={countryImageUrl}
         />
       </View>
+    </View>
+    <View
+      wrap={false}
+      style={{
+        marginTop: "auto",
+        paddingLeft: 40,
+        paddingTop: 10,
+        paddingBottom: 20,
+      }}
+    >
+      <BrandLogoPdf />
     </View>
   </View>
 );
