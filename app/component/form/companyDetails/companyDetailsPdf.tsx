@@ -24,7 +24,7 @@ export const CompanyDetailsPdf: React.FC<CompanyDetails> = ({
 
   return (
     <View style={pdfContainers.CompanyDetails}>
-      <Text style={{ ...pdfTypography.title, marginBottom: 14 }}>To</Text>
+      <Text style={{ ...pdfTypography.title, marginBottom: 8 }}>To</Text>
       <View style={pdfContainers.imageContainer}>
         {companyLogo && (
           <Image src={companyLogo} style={{ height: 40, borderRadius: 6 }} />
@@ -36,7 +36,7 @@ export const CompanyDetailsPdf: React.FC<CompanyDetails> = ({
         </Text>
       )}
       {email && (
-        <Text style={{ ...pdfTypography.description, marginBottom: 12 }}>
+        <Text style={{ ...pdfTypography.description, marginBottom: 6 }}>
           {email}
         </Text>
       )}

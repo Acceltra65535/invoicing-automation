@@ -1,7 +1,14 @@
 import React from "react";
-import { Text, View } from "@react-pdf/renderer";
+import { Path, Svg, Text, View } from "@react-pdf/renderer";
 import { format, isValid } from "date-fns";
-import { pdfTypography, pdfContainers, pdfUtils } from "@/lib/pdfStyles";
+import { BrandLogoPdf } from "../brandLogoPdf";
+import { pdfTypography } from "@/lib/pdfStyles";
+import {
+  JIS_X_0510_QR_PATH,
+  JIS_X_0510_QR_VIEWBOX,
+  PDF417_PATH,
+  PDF417_VIEWBOX,
+} from "@/lib/headerCodes";
 
 const formatInvoiceDate = (dateValue?: string | null): string => {
   if (!dateValue) return "";
@@ -10,35 +17,253 @@ const formatInvoiceDate = (dateValue?: string | null): string => {
 };
 
 export const InvoiceTermsPdf: React.FC<InvoiceTerms> = ({
-  invoiceNumber,
+  orderNumber,
+  customerNumber,
+  pageNumber,
   issueDate,
   dueDate,
-}) => (
-  <View style={pdfContainers.invoiceTerms}>
-    <View style={{ flex: 1 }}>
-      <Text style={pdfTypography.title}>Invoice NO</Text>
-      <Text style={pdfTypography.subTitle}>{invoiceNumber}</Text>
-    </View>
+  headerWebsite,
+  headerPhone,
+  headerAddress,
+  headerCity,
+  headerState,
+  headerZip,
+  headerCountry,
+  billToName,
+  billToAddress,
+  billToCity,
+  billToState,
+  billToZip,
+  billToCountry,
+}) => {
+  const headerCityStateZip = [
+    headerCity,
+    [headerState, headerZip].filter(Boolean).join(" "),
+  ]
+    .filter(Boolean)
+    .join(", ");
+
+  const billToCityStateZip = [
+    billToCity,
+    [billToState, billToZip].filter(Boolean).join(" "),
+  ]
+    .filter(Boolean)
+    .join(", ");
+
+  const formattedIssueDate = formatInvoiceDate(issueDate);
+  const formattedDueDate = formatInvoiceDate(dueDate);
+
+  return (
     <View
       style={{
-        ...pdfUtils.flexRowBetween,
-        paddingRight: 20,
-        paddingLeft: 100,
-        flex: 1,
+        paddingHorizontal: 40,
+        paddingTop: 10,
+        paddingBottom: 8,
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "stretch",
+        justifyContent: "space-between",
       }}
     >
-      <View>
-        <Text style={pdfTypography.title}>Issued</Text>
-        <Text style={pdfTypography.subTitle}>
-          {formatInvoiceDate(issueDate)}
-        </Text>
+      {/* Left column: Top-left logo (aligned at paddingLeft: 40 with bottom logo) + website, phone, address */}
+      <View
+        style={{
+          width: 185,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          paddingRight: 10,
+        }}
+      >
+        <View>
+          <View style={{ marginBottom: 4 }}>
+            <BrandLogoPdf />
+          </View>
+          <View style={pdfTypography.description}>
+            {headerWebsite && (
+              <Text style={{ color: "#374151", fontSize: 10, marginBottom: 1 }}>
+                {headerWebsite}
+              </Text>
+            )}
+            {headerPhone && (
+              <Text style={{ color: "#374151", fontSize: 10, marginBottom: 1 }}>
+                {headerPhone}
+              </Text>
+            )}
+            {headerAddress && (
+              <Text style={{ fontSize: 10 }}>{headerAddress}</Text>
+            )}
+            {headerCityStateZip && (
+              <Text style={{ fontSize: 10 }}>{headerCityStateZip}</Text>
+            )}
+            {headerCountry && (
+              <Text style={{ fontSize: 10 }}>{headerCountry}</Text>
+            )}
+          </View>
+        </View>
       </View>
-      <View>
-        <Text style={pdfTypography.title}>Due Date</Text>
-        <Text style={pdfTypography.subTitle}>
-          {formatInvoiceDate(dueDate)}
-        </Text>
+
+      {/* Middle + Right area */}
+      <View
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+          }}
+        >
+          {/* Middle: BILL TO only (no SHIP TO) */}
+          <View style={{ flex: 1, paddingRight: 8 }}>
+            <Text style={{ ...pdfTypography.title, marginBottom: 4 }}>
+              BILL TO
+            </Text>
+            {billToName && (
+              <Text
+                style={{
+                  ...pdfTypography.subTitle,
+                  marginBottom: 2,
+                }}
+              >
+                {billToName}
+              </Text>
+            )}
+            <View style={pdfTypography.description}>
+              {billToAddress && (
+                <Text style={{ fontSize: 10 }}>{billToAddress}</Text>
+              )}
+              {billToCityStateZip && (
+                <Text style={{ fontSize: 10 }}>{billToCityStateZip}</Text>
+              )}
+              {billToCountry && (
+                <Text style={{ fontSize: 10 }}>{billToCountry}</Text>
+              )}
+            </View>
+          </View>
+
+          {/* Right: PAGE, ISSUE DATE, DUE DATE (no PKG) + JIS X 0510 QR & PDF417 2D codes */}
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-end",
+            }}
+          >
+            <View style={{ width: 132, marginBottom: 4, gap: 2 }}>
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Text style={{ ...pdfTypography.title, fontSize: 9 }}>
+                  PAGE
+                </Text>
+                <Text style={{ ...pdfTypography.subTitle, fontSize: 10 }}>
+                  {pageNumber?.trim() || "1"}
+                </Text>
+              </View>
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Text style={{ ...pdfTypography.title, fontSize: 9 }}>
+                  ISSUE DATE
+                </Text>
+                <Text style={{ ...pdfTypography.subTitle, fontSize: 10 }}>
+                  {formattedIssueDate || "-"}
+                </Text>
+              </View>
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Text style={{ ...pdfTypography.title, fontSize: 9 }}>
+                  DUE DATE
+                </Text>
+                <Text style={{ ...pdfTypography.subTitle, fontSize: 10 }}>
+                  {formattedDueDate || "-"}
+                </Text>
+              </View>
+            </View>
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 6,
+              }}
+            >
+              <Svg viewBox={JIS_X_0510_QR_VIEWBOX} width={42} height={42}>
+                <Path d={JIS_X_0510_QR_PATH} fill="#111827" />
+              </Svg>
+              <Svg viewBox={PDF417_VIEWBOX} width={84} height={42}>
+                <Path d={PDF417_PATH} fill="#111827" />
+              </Svg>
+            </View>
+          </View>
+        </View>
+
+        {/* Bottom row right above the dashed divider line: CUSTOMER # and ORDER # */}
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingTop: 6,
+            marginTop: 4,
+          }}
+        >
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 6,
+            }}
+          >
+            <Text style={{ ...pdfTypography.title, fontSize: 9 }}>
+              CUSTOMER #
+            </Text>
+            <Text style={{ ...pdfTypography.subTitle, fontSize: 10 }}>
+              {customerNumber || "-"}
+            </Text>
+          </View>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 6,
+            }}
+          >
+            <Text style={{ ...pdfTypography.title, fontSize: 9 }}>
+              ORDER #
+            </Text>
+            <Text style={{ ...pdfTypography.subTitle, fontSize: 10 }}>
+              {orderNumber || "-"}
+            </Text>
+          </View>
+        </View>
       </View>
     </View>
-  </View>
-);
+  );
+};

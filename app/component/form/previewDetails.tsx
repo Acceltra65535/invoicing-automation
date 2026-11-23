@@ -3,6 +3,12 @@ import { InvoiceDetailsPreview } from "@/app/component/form/invoiceDetails/invoi
 import { InvoiceTermsPreview } from "@/app/component/form/invoiceTerms/InvoiceTermsPreview";
 import { PaymentDetailsPreview } from "@/app/component/form/paymentDetails/paymentDetailsPreview";
 import { YourDetailsPreview } from "@/app/component/form/yourDetails/yourDetailsPreview";
+import {
+  JIS_X_0510_QR_PATH,
+  JIS_X_0510_QR_VIEWBOX,
+  PDF417_PATH,
+  PDF417_VIEWBOX,
+} from "@/lib/headerCodes";
 import { ChevronDown } from "lucide-react";
 
 export const PreviewDetails = ({
@@ -21,11 +27,11 @@ export const PreviewDetails = ({
   onClick?: (step: string) => void;
 }) => (
   <div className="overflow-x-auto">
-    <div className="w-[595px] min-h-[842px] bg-white rounded-2xl border border-dashed flex flex-col">
+    <div className="w-[595px] bg-white rounded-2xl border border-dashed flex flex-col">
       <InvoiceTermsPreview {...invoiceTerms} onClick={onClick} />
       <div className="border-b  grid grid-cols-2 justify-between border-dashed">
         <div
-          className="py-4 px-10 border-r border-dashed cursor-pointer relative group"
+          className="py-3 px-10 border-r border-dashed cursor-pointer relative group"
           onClick={() => onClick && onClick("1")}
         >
           {!!onClick && (
@@ -39,7 +45,7 @@ export const PreviewDetails = ({
           <YourDetailsPreview {...yourDetails} />
         </div>
         <div
-          className="py-4 px-10 border-dashed cursor-pointer relative group"
+          className="py-3 px-10 border-dashed cursor-pointer relative group"
           onClick={() => onClick && onClick("2")}
         >
           {!!onClick && (
@@ -61,13 +67,33 @@ export const PreviewDetails = ({
           <PaymentDetailsPreview {...paymentDetails} onClick={onClick} />
         </div>
       </div>
-      <div className="mt-auto px-10 pt-4 pb-6">
+      <div className="px-10 pt-2 pb-4 flex items-center justify-between">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/cjtest.svg"
           alt="Cyberjar logo"
           className="h-8 w-auto block"
         />
+        <div
+          className="flex items-center gap-[6px]"
+          title="Temporary invalid 2D codes (JIS X 0510 & PDF417)"
+        >
+          <svg
+            viewBox={JIS_X_0510_QR_VIEWBOX}
+            className="w-[42px] h-[42px] shrink-0"
+            aria-label="JIS X 0510 QR Code"
+          >
+            <path d={JIS_X_0510_QR_PATH} fill="#111827" />
+          </svg>
+          <svg
+            viewBox={PDF417_VIEWBOX}
+            className="w-[84px] h-[42px] shrink-0"
+            preserveAspectRatio="none"
+            aria-label="PDF417 2D Barcode"
+          >
+            <path d={PDF417_PATH} fill="#111827" />
+          </svg>
+        </div>
       </div>
     </div>
   </div>

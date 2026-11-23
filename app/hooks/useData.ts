@@ -33,16 +33,46 @@ export const useData = () => {
   const swiftCode = useGetValue("swiftCode");
   const ifscCode = useGetValue("ifscCode");
 
-  const invoiceNumber = useGetValue("invoiceNo");
+  const orderNumber = useGetValue("orderNo");
+  const customerNumber = useGetValue("customerNo");
+  const pageNumber = useGetValue("pageNo");
   const issueDate = useGetValue("issueDate");
   const dueDate = useGetValue("dueDate");
+  const headerWebsite = useGetValue("headerWebsite");
+  const headerPhone = useGetValue("headerPhone");
+  const headerAddress = useGetValue("headerAddress");
+  const headerCity = useGetValue("headerCity");
+  const headerState = useGetValue("headerState");
+  const headerZip = useGetValue("headerZip");
+  const headerCountry = useGetValue("headerCountry");
+  const billToName = useGetValue("billToName");
+  const billToAddress = useGetValue("billToAddress");
+  const billToCity = useGetValue("billToCity");
+  const billToState = useGetValue("billToState");
+  const billToZip = useGetValue("billToZip");
+  const billToCountry = useGetValue("billToCountry");
 
   const currency = useGetValue("currency") || "INR";
 
   const invoiceTerms = {
-    invoiceNumber,
+    orderNumber,
+    customerNumber,
+    pageNumber,
     issueDate,
     dueDate,
+    headerWebsite,
+    headerPhone,
+    headerAddress,
+    headerCity,
+    headerState,
+    headerZip,
+    headerCountry,
+    billToName,
+    billToAddress,
+    billToCity,
+    billToState,
+    billToZip,
+    billToCountry,
   };
 
   const invoiceDetails = {

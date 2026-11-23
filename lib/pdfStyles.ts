@@ -92,12 +92,12 @@ export const pdfContainers = StyleSheet.create({
     },
     YourDetails: {
         paddingHorizontal: 40,
-        paddingVertical: 14,
+        paddingVertical: 10,
         flex: 1
     },
     CompanyDetails: {
         paddingHorizontal: 40,
-        paddingVertical: 14,
+        paddingVertical: 10,
         flex: 1
     },
     imageContainer: {
@@ -106,7 +106,7 @@ export const pdfContainers = StyleSheet.create({
         justifyContent: "flex-start",
         alignItems: "flex-start",
         height: 40,
-        marginBottom: 12,
+        marginBottom: 8,
     }
 })
 

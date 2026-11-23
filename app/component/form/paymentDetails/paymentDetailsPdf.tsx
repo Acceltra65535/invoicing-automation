@@ -35,12 +35,12 @@ export const PaymentDetailsPdf: React.FC<PaymentDetailsPdfProps> = ({
           flex: 1,
           paddingLeft: 40,
           paddingRight: 12,
-          paddingTop: 14,
-          paddingBottom: 8,
+          paddingTop: 10,
+          paddingBottom: 6,
           flexDirection: "column",
         }}
       >
-        <Text style={{ paddingBottom: 12, ...pdfTypography.title }}>
+        <Text style={{ paddingBottom: 8, ...pdfTypography.title }}>
           Bank Details
         </Text>
         <View style={{ flexDirection: "column", gap: 5 }}>
@@ -127,8 +127,8 @@ export const PaymentDetailsPdf: React.FC<PaymentDetailsPdfProps> = ({
           flex: 1,
           paddingLeft: 40,
           paddingRight: 12,
-          paddingTop: 14,
-          paddingBottom: 8,
+          paddingTop: 10,
+          paddingBottom: 6,
           flexDirection: "column",
         }}
       >

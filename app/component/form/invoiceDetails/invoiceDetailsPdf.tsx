@@ -26,7 +26,7 @@ export const InvoiceDetailsPdf: React.FC<InvoiceItemDetails> = ({
   return (
     <View>
       <View style={pdfUtils.flexRowItemCenter}>
-        <View style={{ flex: 1, paddingHorizontal: 40, paddingVertical: 12 }}>
+        <View style={{ flex: 1, paddingHorizontal: 40, paddingVertical: 9 }}>
           <Text style={pdfTypography.title}>Description</Text>
         </View>
         <View
@@ -34,7 +34,7 @@ export const InvoiceDetailsPdf: React.FC<InvoiceItemDetails> = ({
             flex: 1,
             ...pdfUtils.flexRowItemCenter,
             paddingHorizontal: 40,
-            paddingVertical: 12,
+            paddingVertical: 9,
           }}
         >
           <View style={{ flex: 1 }}>
@@ -51,7 +51,7 @@ export const InvoiceDetailsPdf: React.FC<InvoiceItemDetails> = ({
       {items.map(({ itemDescription, amount, qty }, index) => {
         const containerStyle = {
           marginHorizontal: 40,
-          paddingVertical: 11,
+          paddingVertical: 9,
           ...pdfUtils.borderBottom,
           ...pdfUtils.flexRowItemCenter,
         };
@@ -102,7 +102,7 @@ export const InvoiceDetailsPdf: React.FC<InvoiceItemDetails> = ({
         );
       })}
       <View style={pdfUtils.flexRowItemCenter}>
-        <View style={{ flex: 1, paddingTop: 16 }}>
+        <View style={{ flex: 1, paddingTop: 12 }}>
           {note && (
             <View style={{ paddingHorizontal: 40 }}>
               <Text style={pdfTypography.title}>Note</Text>
@@ -114,7 +114,7 @@ export const InvoiceDetailsPdf: React.FC<InvoiceItemDetails> = ({
           <View
             style={{
               marginHorizontal: 40,
-              paddingVertical: 11,
+              paddingVertical: 9,
               ...pdfUtils.flexRowItemCenter,
               ...pdfUtils.borderBottom,
             }}
@@ -137,7 +137,7 @@ export const InvoiceDetailsPdf: React.FC<InvoiceItemDetails> = ({
             <View
               style={{
                 marginHorizontal: 40,
-                paddingVertical: 11,
+                paddingVertical: 9,
                 ...pdfUtils.flexRowItemCenter,
                 ...pdfUtils.borderBottom,
               }}
@@ -161,7 +161,7 @@ export const InvoiceDetailsPdf: React.FC<InvoiceItemDetails> = ({
             <View
               style={{
                 marginHorizontal: 40,
-                paddingVertical: 11,
+                paddingVertical: 9,
                 ...pdfUtils.flexRowItemCenter,
                 ...pdfUtils.borderBottom,
               }}
@@ -184,7 +184,7 @@ export const InvoiceDetailsPdf: React.FC<InvoiceItemDetails> = ({
           <View
             style={{
               marginHorizontal: 40,
-              paddingVertical: 11,
+              paddingVertical: 9,
               ...pdfUtils.flexRowItemCenter,
             }}
           >

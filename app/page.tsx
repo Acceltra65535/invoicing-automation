@@ -1,4 +1,4 @@
-import { NewInvoiceForm } from "@/app/new/component/NewInvoiceForm";
+import { NewInvoiceForm } from "@/app/component/NewInvoiceForm";
 import { Suspense } from "react";
 
 const Page = () => (

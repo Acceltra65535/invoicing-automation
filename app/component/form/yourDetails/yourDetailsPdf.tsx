@@ -26,7 +26,7 @@ export const YourDetailsPDF: React.FC<YourDetails> = ({
 
   return (
     <View style={pdfContainers.YourDetails}>
-      <Text style={{ ...pdfTypography.title, marginBottom: 14 }}>From</Text>
+      <Text style={{ ...pdfTypography.title, marginBottom: 8 }}>From</Text>
 
       <View style={pdfContainers.imageContainer}>
         {yourLogo && (
@@ -35,7 +35,7 @@ export const YourDetailsPDF: React.FC<YourDetails> = ({
       </View>
       {yourName && <Text style={pdfTypography.text2xl}>{yourName}</Text>}
       {yourEmail && (
-        <Text style={{ ...pdfTypography.description, marginBottom: 12 }}>
+        <Text style={{ ...pdfTypography.description, marginBottom: 6 }}>
           {yourEmail}
         </Text>
       )}

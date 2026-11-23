@@ -38,8 +38,24 @@ interface Item {
 
 interface InvoiceTerms {
   invoiceNumber?: string | null;
+  orderNumber?: string | null;
+  customerNumber?: string | null;
+  pageNumber?: string | null;
   issueDate?: string | null;
   dueDate?: string | null;
+  headerWebsite?: string | null;
+  headerPhone?: string | null;
+  headerAddress?: string | null;
+  headerCity?: string | null;
+  headerState?: string | null;
+  headerZip?: string | null;
+  headerCountry?: string | null;
+  billToName?: string | null;
+  billToAddress?: string | null;
+  billToCity?: string | null;
+  billToState?: string | null;
+  billToZip?: string | null;
+  billToCountry?: string | null;
 }
 
 interface PaymentDetails {
