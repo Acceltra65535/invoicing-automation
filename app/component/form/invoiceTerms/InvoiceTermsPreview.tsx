@@ -148,36 +148,36 @@ export const InvoiceTermsPreview: React.FC<
             {/* Right: PAGE#, ISSUE DATE, DUE DATE (no PKG) + JIS X 0510 QR & PDF417 2D codes */}
             <div className="flex flex-col items-end shrink-0">
               <div className="w-[132px] space-y-1 mb-1.5">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[10px] text-neutral-400 font-semibold uppercase">
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] text-neutral-400 font-semibold uppercase w-[60px] shrink-0">
                     PAGE
                   </span>
-                  <span className="font-medium text-xs text-neutral-800">
+                  <span className="font-medium text-xs text-neutral-800 text-right flex-1">
                     {pageNumber?.trim() || "1"}
                   </span>
                 </div>
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[10px] text-neutral-400 font-semibold uppercase">
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] text-neutral-400 font-semibold uppercase w-[60px] shrink-0">
                     ISSUE DATE
                   </span>
                   {formattedIssueDate ? (
-                    <span className="font-medium text-xs text-neutral-800">
+                    <span className="font-medium text-xs text-neutral-800 text-right flex-1">
                       {formattedIssueDate}
                     </span>
                   ) : (
-                    <span className="inline-block rounded-[3.5px] bg-neutral-100 h-3.5 w-16 animate-pulse" />
+                    <span className="inline-block rounded-[3.5px] bg-neutral-100 h-3.5 w-16 animate-pulse ml-auto" />
                   )}
                 </div>
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[10px] text-neutral-400 font-semibold uppercase">
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] text-neutral-400 font-semibold uppercase w-[60px] shrink-0">
                     DUE DATE
                   </span>
                   {formattedDueDate ? (
-                    <span className="font-medium text-xs text-neutral-800">
+                    <span className="font-medium text-xs text-neutral-800 text-right flex-1">
                       {formattedDueDate}
                     </span>
                   ) : (
-                    <span className="inline-block rounded-[3.5px] bg-neutral-100 h-3.5 w-16 animate-pulse" />
+                    <span className="inline-block rounded-[3.5px] bg-neutral-100 h-3.5 w-16 animate-pulse ml-auto" />
                   )}
                 </div>
               </div>

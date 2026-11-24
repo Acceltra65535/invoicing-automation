@@ -161,14 +161,14 @@ export const InvoiceTermsPdf: React.FC<InvoiceTerms> = ({
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  justifyContent: "space-between",
                   alignItems: "center",
+                  gap: 4,
                 }}
               >
-                <Text style={{ ...pdfTypography.title, fontSize: 9 }}>
+                <Text style={{ ...pdfTypography.title, fontSize: 9, width: 60 }}>
                   PAGE
                 </Text>
-                <Text style={{ ...pdfTypography.subTitle, fontSize: 10 }}>
+                <Text style={{ ...pdfTypography.subTitle, fontSize: 10, flex: 1, textAlign: "right" }}>
                   {pageNumber?.trim() || "1"}
                 </Text>
               </View>
@@ -176,14 +176,14 @@ export const InvoiceTermsPdf: React.FC<InvoiceTerms> = ({
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  justifyContent: "space-between",
                   alignItems: "center",
+                  gap: 4,
                 }}
               >
-                <Text style={{ ...pdfTypography.title, fontSize: 9 }}>
+                <Text style={{ ...pdfTypography.title, fontSize: 9, width: 60 }}>
                   ISSUE DATE
                 </Text>
-                <Text style={{ ...pdfTypography.subTitle, fontSize: 10 }}>
+                <Text style={{ ...pdfTypography.subTitle, fontSize: 10, flex: 1, textAlign: "right" }}>
                   {formattedIssueDate || "-"}
                 </Text>
               </View>
@@ -191,14 +191,14 @@ export const InvoiceTermsPdf: React.FC<InvoiceTerms> = ({
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  justifyContent: "space-between",
                   alignItems: "center",
+                  gap: 4,
                 }}
               >
-                <Text style={{ ...pdfTypography.title, fontSize: 9 }}>
+                <Text style={{ ...pdfTypography.title, fontSize: 9, width: 60 }}>
                   DUE DATE
                 </Text>
-                <Text style={{ ...pdfTypography.subTitle, fontSize: 10 }}>
+                <Text style={{ ...pdfTypography.subTitle, fontSize: 10, flex: 1, textAlign: "right" }}>
                   {formattedDueDate || "-"}
                 </Text>
               </View>
